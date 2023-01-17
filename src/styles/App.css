@@ -34,4 +34,12 @@ table {
   input[type=submit]:hover {
     background-color: #45a049;
   }
+
+  .center {
+    position: fixed;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+ 
+  }
   

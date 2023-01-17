@@ -1,0 +1,1 @@
+scp -r * root@betulis.dk:/var/www/frontend

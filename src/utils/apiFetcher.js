@@ -1,4 +1,4 @@
-const api = "http://localhost:3000/"
+const api = "http://localhost:8080/api"
 // Husk at Endpoint variabel skal slutte på "/" Eksempel: restaurants/
 
 export const ApiGet = async (endpoint, setState) => {
@@ -13,13 +13,12 @@ export const ApiGet = async (endpoint, setState) => {
   }
 }
 
-export const ApiPut = async (endpoint, onChange, obj) => {
+export const ApiPut = async (endpoint, obj) => {
   try {
     const options = makeOptions("PUT", obj)
     const data = await fetch(api + endpoint + obj.id, options)
     const json = await data.json()
-    
-    onChange()        
+  
   } 
   catch (error) {
     console.error(error)

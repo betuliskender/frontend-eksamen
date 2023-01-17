@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080/devops_starter_war_exploded";
+const URL = "http://localhost:8080";
  
 function handleHttpErrors(res) {
  if (!res.ok) {
@@ -20,6 +20,24 @@ function loginFacade() {
     }
     const logout = () => {
       localStorage.removeItem("jwtToken");
+    }
+
+    const getUserRoles = () =>
+    {
+        const token = getToken()
+        if (token != null)
+        {
+            const payloadBase64 = getToken().split('.')[1]
+            const decodedClaims = JSON.parse(window.atob(payloadBase64))
+            const roles = decodedClaims.roles
+            return roles
+        } else return ""
+    }
+
+    const hasUserAccess = (neededRole, loggedIn) =>
+    {
+        const roles = getUserRoles().split(',')
+        return loggedIn && roles.includes(neededRole)
     }
 
  
@@ -52,7 +70,9 @@ const makeOptions= (method,addToken,body) =>{
      loggedIn,
      login,
      logout,
-     fetchData
+     fetchData,
+     hasUserAccess,
+     getUserRoles
  }
 }
 const facade = loginFacade();

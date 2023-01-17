@@ -60,7 +60,6 @@ const DisplayAllProjects = () => {
             <tr>
                 <th>Name</th>
                 <th>Desciption</th>
-                <th>Developer</th>
             </tr>
         </thead>
         {project != undefined && project.map((project) => (
@@ -68,7 +67,6 @@ const DisplayAllProjects = () => {
                 <tr>
                     <td>{project.name}</td>
                     <td>{project.description}</td>
-                    <td>{project.developers.name}</td>
                     <td><button onClick={() => toggleProjectHour(project.id)}>See Project invoice</button></td>
                     <td><button onClick={() => addDeveloper(project.id)}>Add developer</button></td>
                 </tr>
